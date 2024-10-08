@@ -8,7 +8,7 @@ public:
 	MyString(const char* str);        // конструктор с параметрами
 	MyString(const MyString& string); // конструтор копирования
 
-	void set(const char* newStr);		  // метод ввода строки
+	void set(const char* newStr);	  // метод ввода строки
 	void update();					  // метод обновления строки по заданию
 	void print();					  // метод вывода строки на экран
 

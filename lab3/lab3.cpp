@@ -3,13 +3,14 @@
 
 int main()
 {
-    MyString str1 = "Rere";
+    MyString str("Hello World!");
+    MyString new_str(str);
 
-    MyString fake_str(str1);
-    fake_str.print();
-
-    fake_str.set("ха-ха лох");
-    fake_str.print();
+    new_str.print();
+    new_str.set("helloHELLO");
+    new_str.print();
+    new_str.update();
+    new_str.print();
 
     return 0;
 }  

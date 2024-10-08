@@ -1,5 +1,6 @@
 #include "MyString.h"
 #include <iostream>
+#include <fstream>
 
 MyString::MyString() {
 
@@ -48,13 +49,52 @@ void MyString::set(const char* newStr) {
 }
 
 void MyString::update() {
+	const char uppercase[] = "QWERTYUIOPASDFGHJKLZXCVBNM";
 
-	std::cout << "Строка обновлена" << std::endl;
+	if (this->str != nullptr && strlen(this->str) == 10) {
+
+		// Копия старой строки
+		char* oldStr = new char[strlen(this->str) + 1];
+		strcpy_s(oldStr, strlen(this->str) + 1, this->str);
+
+		int j = 0;
+
+		// Удаление заглавных букв
+		for (int i = 0; this->str[i] != '\0'; ++i) {
+			bool isUpper = false;
+
+			for (int k = 0; uppercase[k] != '\0'; ++k) {
+				if (this->str[i] == uppercase[k]) {
+					isUpper = true;
+					break;
+				}
+			}
+
+			if (!isUpper) {
+				this->str[j++] = this->str[i];
+			}
+		}
+		this->str[j] = '\0';
+
+		std::ofstream out("strings.txt");
+		if (out.is_open()) {
+			out << "Старая строка: " << oldStr << std::endl;
+			out << "Новая строка: " << this->str << std::endl;
+		}
+		out.close();
+
+		delete[] oldStr; 
+
+		std::cout << "Строка обновлена" << std::endl;
+	}
+	else {
+		std::cout << "Строка не равна 10 символам (или используются русские символы)" << std::endl;
+	}
 }
 
 void MyString::print() {
 
-	if (this->str != nullptr)
+	if (str != nullptr)
 		std::cout << "Вывод строки --- " << str << std::endl;
 	else
 		std::cout << "Строка является пустой" << std::endl;

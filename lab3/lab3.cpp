@@ -3,13 +3,13 @@
 
 int main()
 {
-    //MyString str1();
-    MyString* str2 = new MyString();
+    MyString str1 = "Rere";
 
-    //str1.print();
-    str2->print();
+    MyString fake_str(str1);
+    fake_str.print();
 
-    delete str2;
+    fake_str.set("ха-ха лох");
+    fake_str.print();
 
     return 0;
 }  

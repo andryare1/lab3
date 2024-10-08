@@ -4,11 +4,14 @@ class MyString
 	char* str;
 
 public:
-	MyString();
-	MyString(const char* str);
-	void set();
-	void update();
-	void print();
-	~MyString();
+	MyString();						  // конструктор без параметров
+	MyString(const char* str);        // конструктор с параметрами
+	MyString(const MyString& string); // конструтор копирования
+
+	void set(const char* newStr);		  // метод ввода строки
+	void update();					  // метод обновления строки по заданию
+	void print();					  // метод вывода строки на экран
+
+	~MyString();                      // деструктор
 };
 

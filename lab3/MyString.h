@@ -5,7 +5,7 @@ class MyString
 
 public:
 	MyString();
-	MyString(char* str);
+	MyString(const char* str);
 	void set();
 	void update();
 	void print();

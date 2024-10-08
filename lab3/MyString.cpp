@@ -2,25 +2,29 @@
 #include <iostream>
 
 MyString::MyString() {
+
 	str = nullptr;
+
 	std::cout << "Конструктор без параметров вызван" << std::endl;
 }
 
-MyString::MyString(char* str) {
-	/*this->str = new char[strlen(str) + 1];
-	strcpy(this->str, str);*/
+MyString::MyString(const char* str) {
+
 	this->str = new char[strlen(str) + 1];
-	strcpy(this->str, str);
+	strcpy_s(this->str, strlen(str) + 1, str);
 
 	std::cout << "Конструктор с параметром вызван" << std::endl;
 }
 
 MyString::~MyString() {
+
 	delete[] str;
+
 	std::cout << "Деструктор вызван" << std::endl;
 }
 
 void MyString::set() {
+
 	std::cout << "Строка записана" << std::endl;
 }
 
@@ -29,6 +33,11 @@ void MyString::update() {
 }
 
 void MyString::print() {
-	std::cout << str << std::endl;
-	std::cout << "Строка выведена на экран" << std::endl;
+
+	if (str != nullptr) {
+		std::cout << str << std::endl;
+		std::cout << "Строка выведена на экран" << std::endl;
+	}
+	else
+		std::cout << "Строка является пустой" << std::endl;
 }

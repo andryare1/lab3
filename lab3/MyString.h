@@ -1,8 +1,11 @@
 #pragma once
 class MyString
 {
+	char* str;
+
+public:
 	MyString();
-	MyString(char*);
+	MyString(char* str);
 	void set();
 	void update();
 	void print();
